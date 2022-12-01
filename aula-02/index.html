@@ -1,19 +1,35 @@
 <html>
     <script>
-        // String
-        console.log("Hellow World!");
-        // Number
-        // Operadores
-        console.log(3000 - 1000 - 200 - 100 - 100 - 300 - 300 - 500);
-        console.log(3000 - 1200 - 250 - 100 - 100 - 500 - 0 - 1000);
-        console.log(10 * 10);
-        console.log(4 / 2);
-        console.log(10 % 3);
-        // Concatenando palavaras
-        console.log("Hello" + "World")
-        console.log("Implementando Projeto Aula-01");
-        // Janeiro
-        console.log("Janeiro")
+        function arredondar(valor) {
+            return Math.round(valor * 100)/100
+        }
+
+        function calcularJuros(saldo) {
+            juros = arredondar(saldo * 0.1)
+            return juros;
+        }
+
+        function calcularRendimento(saldo) {
+            rendimento = arredondar(saldo * 0.005);
+            return rendimento;
+        }
+
+        function calcularSaldo(saldo, salario, aluguel, contaDeAgua, contaDeLuz, internet, transporte, lazer, alimentacao) {
+            saldo = saldo + salario - aluguel - contaDeAgua - contaDeLuz - internet - transporte - lazer - alimentacao;
+            estaNegativo = saldo < 0
+            if(estaNegativo) {
+                juros = calcularJuros(saldo)
+                saldo = arredondar( saldo + juros)
+            } else {
+                rendimento = calcularRendimento(saldo)
+                saldo = arredondar(saldo + rendimento);
+            }
+
+            return saldo
+        } 
+
+        saldo = 0;
+
         salarioJaneiro = 3000;
         aluguelJaneiro = 1000;
         contaDeAguaJaneiro = 200;
@@ -22,29 +38,8 @@
         transporteJaneiro = 300;
         lazerJaneiro = 300;
         alimentacaoJaneiro = 500;
-        // console.log(3000 - 1000 - 200 - 100 - 100 - 300 - 300 - 500);
-        // console.log(salario - aluguel - contaDeAgua - contaDeLuz - internet - transporte - lazer - alimentacao);
-        saldoJaneiro = (salarioJaneiro - aluguelJaneiro - contaDeAguaJaneiro - contaDeLuzJaneiro - internetJaneiro - transporteJaneiro - lazerJaneiro - alimentacaoJaneiro);
-        estaNegativoJaneiro = saldoJaneiro < 0
-        // Boolean
-        console.log(estaNegativoJaneiro);
-        if(estaNegativoJaneiro) {
-            console.log("Juros de Janeiro");
-            jurosJaneiro = saldoJaneiro * 0.1
-            console.log(jurosJaneiro);
-            console.log("Em Janeiro está negativo");
-            saldoJaneiro = saldoJaneiro + jurosJaneiro
-        } else {
-            console.log("Rendimentos de Janeiro");
-            rendimentoJaneiro = saldoJaneiro * 0.005
-            console.log(rendimentoJaneiro)
-            console.log("Em Janeiro está positivo")
-            saldoJaneiro = saldoJaneiro + rendimentoJaneiro;
-        }
-        console.log(saldoJaneiro);
-        // ??? avaliar se tem juros ou rendimento
-        // Fevereiro
-        console.log("Fevereiro")
+        saldo = calcularSaldo(saldo, salarioJaneiro, aluguelJaneiro, contaDeAguaJaneiro, contaDeLuzJaneiro, internetJaneiro, transporteJaneiro, lazerJaneiro, alimentacaoJaneiro)
+        
         salarioFevereiro = 3000;
         aluguelFevereiro = 1200;
         contaDeAguaFevereiro = 250;
@@ -53,31 +48,18 @@
         transporteFevereiro = 500;
         lazerFevereiro = 0;
         alimentacaoFevereiro = 1000;
-        // console.log(3000 - 1200 - 250 - 100 - 100 - 500 - 0 - 1000);
-        // console.log(salario - aluguel - contaDeAgua- contaDeLuz - internet - transporte - lazer - alimentacao);
-        saldoFevereiro = (salarioFevereiro - aluguelFevereiro - contaDeAguaFevereiro - contaDeLuzFevereiro - internetFevereiro - transporteFevereiro - lazerFevereiro - alimentacaoFevereiro);
-        estaNegativoFevereiro = saldoFevereiro < 0;
-        // Boolean
-        console.log(estaNegativoFevereiro);
-        if(estaNegativoFevereiro) {
-            console.log("Juros de Fevereiro");
-            jurosFevereiro = saldoFevereiro * 0.1
-            console.log(jurosFevereiro);
-            saldoFevereiro = saldoFevereiro + jurosFevereiro
-            console.log("Em Fevereiro está negativo");
-        } else {
-            console.log("Rendimentos de Fevereiro");
-            rendimentoFevereito = saldoFevereiro * 0.005
-            console.log(rendimentoFevereito);
-            console.log("Em Janeiro está positivo");
-            saldoFevereiro = saldoFevereiro + rendimentoFevereito
-        }
-        console.log(saldoFevereiro);
-        // ??? avaliar se tem juros ou rendimento
-        console.log("Acumulado Ano");
-        // Como eu faço para calcular o acumulado do ano?
-        // console.log(saldoJaneiro + saldoFevereiro);
-        acumuladoAno = saldoJaneiro + saldoFevereiro;
-        console.log(acumuladoAno);
+        saldo = calcularSaldo(saldo, salarioFevereiro, aluguelFevereiro, contaDeAguaFevereiro, contaDeLuzFevereiro, internetFevereiro, transporteFevereiro, lazerFevereiro, alimentacaoFevereiro)
+        
+        salarioMarco = 4000;
+        aluguelMarco = 1200;
+        contaDeAguaMarco = 200;
+        contaDeLuzMarco = 100;
+        internetMarco = 200;
+        transporteMarco = 500;
+        lazerMarco = 800;
+        alimentacaoMarco = 1000;
+        saldo = calcularSaldo(saldo, salarioMarco, aluguelMarco, contaDeAguaMarco, contaDeLuzMarco, internetMarco, transporteMarco, lazerMarco, alimentacaoMarco)
+        
+        console.log(saldo);
     </script>
 </html>
